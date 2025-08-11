@@ -12,10 +12,84 @@ body {
   min-height: 100vh;
 }
 
+/* Global variables and smooth anchor offset for sticky header */
+:root {
+  --header-height: 72px; /* increased to show more top space when anchoring */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-padding-top: var(--header-height);
+}
+
+/* Ensure sections with anchors aren't hidden under the sticky header */
+[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 80px; /* slightly taller on small screens */
+  }
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+}
+
+/* Site navigation header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 8px 6px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0A66C2;
+}
+
+.nav-link.active {
+  color: #0A66C2;
+  border-bottom-color: #0A66C2;
+}
+
+.theme-toggle {
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  color: #333;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: rgba(102, 126, 234, 0.1);
 }
 
 .header {
@@ -53,6 +127,68 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ======================= */
+/* Dark mode overrides     */
+/* Toggle via [data-theme="dark"] on html element */
+/* ======================= */
+html[data-theme="dark"] body {
+  color: #e5e7eb;
+  background: radial-gradient(1200px 800px at 20% 10%, #0f172a, #0b1220);
+}
+
+html[data-theme="dark"] .site-header {
+  background: #0b1220;
+  border-bottom-color: #1f2937;
+}
+
+html[data-theme="dark"] .nav-link {
+  color: #e5e7eb;
+}
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .nav-link.active {
+  color: #8ab4f8;
+  border-bottom-color: #8ab4f8;
+}
+
+html[data-theme="dark"] .header,
+html[data-theme="dark"] .section {
+  background: rgba(17, 24, 39, 0.85);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="dark"] .header h2 { color: #a3a3a3; }
+
+html[data-theme="dark"] .contact-item { color: #cbd5e1; }
+html[data-theme="dark"] .contact-item:hover { background: rgba(99, 102, 241, 0.15); }
+
+html[data-theme="dark"] .experience-item { background: rgba(99, 102, 241, 0.08); }
+html[data-theme="dark"] .company { color: #8ab4f8; }
+html[data-theme="dark"] .duration { color: #94a3b8; }
+html[data-theme="dark"] .responsibilities li::before { color: #8ab4f8; }
+html[data-theme="dark"] .technologies { background: rgba(99, 102, 241, 0.12); }
+
+html[data-theme="dark"] .skills-category { background: rgba(99, 102, 241, 0.08); }
+html[data-theme="dark"] .skills-category h4 { color: #e5e7eb; }
+html[data-theme="dark"] .section h3 { color: #e5e7eb; }
+html[data-theme="dark"] .summary-text { color: #cbd5e1; }
+
+/* Stats card in dark mode */
+html[data-theme="dark"] .stats {
+  background: rgba(17, 24, 39, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+html[data-theme="dark"] .stat-label { color: #e5e7eb; }
+
+/* Work positions title contrast */
+html[data-theme="dark"] .job-title { color: #f3f4f6; }
+
+/* Degree title contrast */
+html[data-theme="dark"] .degree { color: #f3f4f6; }
+
+/* Theme toggle visibility in dark */
+html[data-theme="dark"] .theme-toggle { color: #e5e7eb; }
+html[data-theme="dark"] .theme-toggle:hover { background: rgba(138, 180, 248, 0.15); }
 
 .header h2 {
   font-size: 1.3em;
