@@ -499,6 +499,44 @@ html[data-theme="dark"] .theme-toggle:hover { background: rgba(138, 180, 248, 0.
   }
 }
 
+/* Enhanced mobile responsiveness */
+@media (max-width: 640px) {
+  .nav {
+    gap: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-link {
+    font-size: 0.95rem;
+    padding: 8px 2px;
+    white-space: nowrap;
+  }
+  .theme-toggle { flex: 0 0 auto; }
+
+  .profile-image {
+    width: 96px;
+    height: 96px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-thumb {
+    max-width: 100%;
+  }
+  .stat-number { font-size: 2.2em; }
+}
+
+@media (max-width: 400px) {
+  .header { padding: 24px 16px; }
+  .section { padding: 24px 16px; }
+  .header h1 { font-size: 1.7em; }
+}
+
 .floating-animation {
   animation: float 6s ease-in-out infinite;
 }
